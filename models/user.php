@@ -39,5 +39,24 @@ class User extends AppModel {
 		)
 	);
 
+	var $actAs = array('Acl' => array('type' => 'requester'));
+
+	function parentNode() {
+		if (!$this->id && empty($this->data)) {
+			return null;
+		}
+		$data = $this->data;
+		if (empty($this->data)) {
+			$data = $this->read();
+		} 
+		if (!$data['User']['role_id']) {
+			return null;
+		} else {
+			$this->Role->id = $data['User']['role_id'];
+			$roleNode = $this->Role->node();
+			return array('Role' => array('id' => $roleNode[0]['Aro']['foreign_key']));
+		}
+	}
+
 }
 ?>
