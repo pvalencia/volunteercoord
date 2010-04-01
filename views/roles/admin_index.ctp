@@ -6,7 +6,6 @@
 			<th><?php __('Name'); ?></th>
 			<th><?php __('Created'); ?></th>
 			<th><?php __('Modified'); ?></th>
-			<th class="actions">&nbsp;</th>
 	</tr>
 	<?php
 	$i = 0;
@@ -18,13 +17,15 @@
 	?>
 	<tr<?php echo $class;?>>
 		<td><?php echo $role['Role']['id']; ?>&nbsp;</td>
-		<td><?php echo $role['Role']['name']; ?>&nbsp;</td>
+		<td>
+			<?php 
+				echo $this->Html->link($role['Role']['name'],
+					array('action' => 'edit', $role['Role']['id']),
+					array('title' => String::insert(__('Edit :s\'s name', true), array('s' => $role['Role']['name'])))); 
+			?>&nbsp;
+		</td>
 		<td><?php echo $role['Role']['created']; ?>&nbsp;</td>
 		<td><?php echo $role['Role']['modified']; ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $role['Role']['id'])); ?>
-		</td>
-	</tr>
 <?php endforeach; ?>
 	</table>
 </div>
