@@ -21,7 +21,7 @@ class AppSchema extends CakeSchema {
 		'modified' => array('type' => 'datetime', 'default' => null, 'null' => false),
 	);
 
-	var $person_users = array(
+	var $person_user = array(
 		'id' => array('type' =>'integer', 'length' => 11, 'default' => null, 'null' => false, 'key' => 'primary'),
 		'person_id' => array('type' =>'integer', 'length' => 11, 'default' => null, 'null' => false),
 		'user_id' => array('type' =>'integer', 'length' => 11, 'default' => null, 'null' => false),

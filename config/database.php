@@ -33,13 +33,18 @@ class DATABASE_CONFIG {
 
 	var $default = array();
 
+	var $acl = array();
+
 	function __construct() {
 		$this->development['database'] = ROOT . DS . $this->development['database'];
 		$this->test['database'] = ROOT . DS . $this->test['database'];
-		if(Configure::read() > 0)
+		if(Configure::read() > 0) {
 			$this->default = $this->development;
-		else
+			$this->acl = $this->development;
+		} else {
 			$this->default = $this->production;
+			$this->acl = $this->production;
+		}
 	}
 
 	function DATABASE_CONFIG() {
