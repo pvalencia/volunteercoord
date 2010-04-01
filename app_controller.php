@@ -13,6 +13,17 @@ class AppController extends Controller {
 			'time' => '2 weeks',
 		),
 		'Session',
+		'Auth' => array(
+			'authorize' => 'actions',
+			'userModel' => 'Person',
+			'fields' => array('username' => 'email', 'password' => 'password')
+		),
+		'Acl'
 	);
+
+	function beforeFilter() {
+		if(Configure::read() > 0)
+			$this->Auth->allow('*');
+	}
 }
 ?>

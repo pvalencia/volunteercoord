@@ -20,7 +20,7 @@ class Role extends AppModel {
 		)
 	);
 
-	var $actAs = array('Acl' => array('type' => 'requester'));
+	var $actsAs = array('Acl' => array('type' => 'requester'));
 
 	function parentNode() {
 		return null;
